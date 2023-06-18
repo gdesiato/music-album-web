@@ -24,6 +24,7 @@ public class Album {
     private String title;
     private String releaseYear;
     private List<String> genres;
+    private List<String> tracks;
     private String cover;
     private List<String> backdrops;
     private double averageRating;
