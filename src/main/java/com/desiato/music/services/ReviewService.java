@@ -19,12 +19,12 @@ public class ReviewService {
     private MongoTemplate mongoTemplate;
 
 
-    public Review createReview(String reviewBody, String musicBrainzId){
+    public Review createReview(String name, String comment, String musicBrainzId){
 
         // create and persist a new review
-        Review review = reviewRepository.insert(new Review(reviewBody));
+        Review review = reviewRepository.insert(new Review(name, comment));
 
-        // associare the review with one of the movies
+        // associate the review with one of the movies
         mongoTemplate.update(Album.class)
                 // updating the movie where the musicBrainzId matches the musicBrainz Id received from the user
                 .matching(Criteria.where("musicBrainzId").is(musicBrainzId))
@@ -32,5 +32,9 @@ public class ReviewService {
                 .first();
 
         return review;
+    }
+
+    public Review save(Review review){
+        return reviewRepository.save(review);
     }
 }

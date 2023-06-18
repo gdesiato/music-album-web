@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Rock Albums</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Best Rock Albums</h1>
+    <div class="row">
+        <div class="col-sm-4" th:each="album : ${albums}">
+            <div class="card mb-4">
+                <img class="card-img-top" th:src="${album.cover}" alt="Album cover">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${album.title}"></h5>
+                    <p class="card-text" th:text="${album.artist}"></p>
+                    <p class="card-text" th:text="${album.releaseYear}"></p>
+                    <a th:href="@{'/albums/' + ${album.musicBrainzId}}" class="btn btn-primary">View Album</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

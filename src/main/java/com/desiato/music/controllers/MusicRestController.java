@@ -2,10 +2,8 @@ package com.desiato.music.controllers;
 
 import com.desiato.music.models.Album;
 import com.desiato.music.services.AlbumService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/albums")
-public class MusicController {
+public class MusicRestController {
 
     @Autowired
     private AlbumService albumService;

@@ -1,0 +1,23 @@
+.rating-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.rating-input {
+  display: none;
+}
+
+.rating-label {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.rating-input:checked + .rating-label {
+  background-color: #f00;
+}
+

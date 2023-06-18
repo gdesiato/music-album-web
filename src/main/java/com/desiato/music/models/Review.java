@@ -12,12 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Document(collection = "reviews")
 public class Review {
-
     @Id
     private ObjectId id;
-    private String body;
+    private String name;
+    private String comment;
+    private int albumRating;
 
-    public Review(String body) {
-        this.body = body;
+    public Review(String name, String comment) {
+        this.name = name;
+        this.comment = comment;
     }
 }
