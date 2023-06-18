@@ -19,7 +19,7 @@ window.onload = function() {
             body: JSON.stringify({
                 name: name,
                 comment: comment,
-                rating: rating
+                albumRating: rating
             })
         })
         .then(response => {
@@ -30,13 +30,14 @@ window.onload = function() {
         })
         .then(data => {
             console.log(data);
-            window.location.reload(); // Reload the page to see the updated review and rating
+            window.location.reload(); // Reload the page to see the new review and rating
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
     });
 };
+
 
 
 

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -10,6 +9,11 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Best Rock Albums</h1>
+    <style>
+            .card:hover {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            }
+        </style>
     <div class="row">
         <div class="col-sm-4" th:each="album : ${albums}">
             <div class="card mb-4">

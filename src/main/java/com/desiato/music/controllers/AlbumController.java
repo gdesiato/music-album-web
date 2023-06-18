@@ -53,12 +53,14 @@ public class AlbumController {
         review = reviewService.save(review);
         album.getReviewIds().add(review);
 
-        // Calculate and update the album's rating
-        int newRating = albumService.calculateNewRating(album);
-        album.setRating(newRating);
+        // Update the album's overall rating
+        albumService.calculateNewRating(album);
 
         albumService.save(album);
 
         return ResponseEntity.ok(album);
     }
+
+
+
 }

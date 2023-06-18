@@ -67,7 +67,6 @@
 
         <h5>Reviews</h5>
         <div id="reviewsSection">
-
             <div th:each="review : ${album.reviewIds}">
                 <p>
                     <strong>Name: </strong><span th:text="${review.name}"></span>
@@ -75,8 +74,18 @@
                 <p>
                     <strong>Comment: </strong><span th:text="${review.comment}"></span>
                 </p>
+                <p>
+                    <strong>Rating: </strong><span th:text="${review.albumRating}"></span>
+                </p>
                 <hr>
             </div>
+        </div>
+
+        <h5>Overall Rating</h5>
+        <div>
+            <p>
+                <h4>Overall Rating: <span th:text="${album.overallRating}"></span></h4>
+            </p>
         </div>
     </div>
 </div>
