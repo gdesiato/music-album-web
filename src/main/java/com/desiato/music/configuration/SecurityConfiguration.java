@@ -17,11 +17,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/review").hasRole("USER")
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+//                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout();
