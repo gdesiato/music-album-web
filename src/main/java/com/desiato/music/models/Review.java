@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Document(collection = "reviews")
 public class Review {
+
     @Id
     private ObjectId id;
     private String name;
