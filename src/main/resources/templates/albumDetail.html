@@ -1,61 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Album Details</title>
-    </head>
+<head>
+    <title>Album Details</title>
+</head>
 
-    <body>
-        <h2 th:text="${album.title}"></h2>
-        <img th:src="${album.cover}" alt="Album cover image" />
-        <p><strong>Artist: </strong><span th:text="${album.artist}"></span></p>
+<body>
+<h2 th:text="${album.title}"></h2>
+<img th:src="${album.cover}" alt="Album cover image" />
+<p><strong>Artist: </strong><span th:text="${album.artist}"></span></p>
 
-        <!-- Displaying genres -->
-        <p><strong>Genres: </strong></p>
-        <ul th:each="genre : ${album.genres}">
-            <li th:text="${genre}"></li>
-        </ul>
+<!-- Displaying genres -->
+<p><strong>Genres: </strong></p>
+<ul th:each="genre : ${album.genres}">
+    <li th:text="${genre}"></li>
+</ul>
 
-        <!-- Review button -->
-        <a th:href="@{/albums/{id}/review(id=${album.musicBrainzId})}" class="btn btn-primary">Review this album</a>
+<!-- Review button -->
+<a th:href="@{/albums/{id}/review(id=${album.musicBrainzId})}" class="btn btn-primary">Review this album</a>
 
-        <!-- Displaying reviews -->
-        <h5>Reviews</h5>
-        <div id="reviewsSection">
-            <div th:each="review : ${album.reviewIds}">
-                <p>
-                    <strong>Name: </strong><span th:text="${review.name}"></span>
-                </p>
-                <p>
-                    <strong>Comment: </strong><span th:text="${review.comment}"></span>
-                </p>
-                <p>
-                    <strong>Rating: </strong><span th:text="${review.rating}"></span>
-                </p>
-                <hr>
-            </div>
-        </div>
+<!-- Displaying reviews -->
+<h5>Reviews</h5>
+<div id="reviewsSection">
+    <div th:each="review : ${reviews}">
+        <p>
+            <strong>Name: </strong><span th:text="${review.name}"></span>
+        </p>
+        <p>
+            <strong>Comment: </strong><span th:text="${review.comment}"></span>
+        </p>
+        <p>
+            <strong>Rating: </strong><span th:value="${review.albumRating}"></span>
+        </p>
+        <hr>
+    </div>
+</div>
 
-        <h5>Overall Rating</h5>
-        <div>
-            <p>
-            <h4>Overall Rating: <span th:text="${album.overallRating}"></span></h4>
-            </p>
-        </div>
+<h5>Overall Rating</h5>
+<div>
+    <p>
+    <h4>Overall Rating: <span th:text="${album.overallRating}"></span></h4>
+    </p>
+</div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="/js/script.js"></script>
-    </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
 
 </html>
-
-
-
-
-
-
-
-
-
-

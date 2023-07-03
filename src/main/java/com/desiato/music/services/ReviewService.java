@@ -3,11 +3,14 @@ package com.desiato.music.services;
 import com.desiato.music.models.Album;
 import com.desiato.music.models.Review;
 import com.desiato.music.repositories.ReviewRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -36,5 +39,9 @@ public class ReviewService {
 
     public Review save(Review review){
         return reviewRepository.save(review);
+    }
+
+    public Optional<Review> getById(ObjectId id) {
+        return reviewRepository.findById(id);
     }
 }

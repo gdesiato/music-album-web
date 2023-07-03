@@ -4,6 +4,8 @@ import com.desiato.music.models.Album;
 import com.desiato.music.models.Review;
 import com.desiato.music.services.AlbumService;
 import com.desiato.music.services.ReviewService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,11 +14,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/albums")
 public class AlbumController {
+
+    private static final Logger log = LoggerFactory.getLogger(AlbumController.class);
 
     @Autowired
     private AlbumService albumService;
@@ -35,13 +41,23 @@ public class AlbumController {
     public String getAlbumById(@PathVariable("id") String id, Model model) {
         Optional<Album> optionalAlbum = albumService.albumById(id);
         if(optionalAlbum.isPresent()) {
-            model.addAttribute("album", optionalAlbum.get());
+            Album album = optionalAlbum.get();
+            log.info("Album found: " + album.toString());
+
+            // Convert reviewIds to Reviews
+            List<Review> reviews = album.getReviewIds().stream()
+                    .filter(Objects::nonNull)  // Ensure there's no null values
+                    .collect(Collectors.toList());
+
+            model.addAttribute("album", album);
+            model.addAttribute("reviews", reviews); // Pass the review objects as a separate attribute
             return "albumDetail"; // album details
         } else {
             model.addAttribute("error", "The album you're looking for doesn't exist.");
             return "error";  // "error"
         }
     }
+
 
     @PostMapping("/{id}/reviews-ratings")
     public ResponseEntity<Album> addReviewAndRating(@PathVariable("id") String musicBrainzId, @RequestBody Review review) {
