@@ -20,6 +20,7 @@ public class SecurityConfiguration {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/reviews/**").hasRole("USER")
+                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()

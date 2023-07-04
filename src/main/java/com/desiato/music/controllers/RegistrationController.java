@@ -1,6 +1,8 @@
 package com.desiato.music.controllers;
 
+import com.desiato.music.models.Role;
 import com.desiato.music.models.User;
+import com.desiato.music.repositories.RoleRepository;
 import com.desiato.music.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,11 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Collections;
+
 @Controller
 public class RegistrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -30,8 +37,19 @@ public class RegistrationController {
     public String registerUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+
+        // Create a new role or retrieve an existing "User" role
+        Role userRole = roleRepository.findRoleByName("User");
+        if (userRole == null) {
+            userRole = roleRepository.save(new Role("User"));
+        }
+
+        // Assign the "User" role to the user
+        user.setRoles(Collections.singletonList(userRole));
+
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("success", "Registration successful");
         return "redirect:/login";
     }
+
 }
