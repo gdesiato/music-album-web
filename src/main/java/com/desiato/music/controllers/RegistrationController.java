@@ -30,7 +30,7 @@ public class RegistrationController {
     public String registerUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        userService.save(user);
+        userService.saveUser(user);
         redirectAttributes.addFlashAttribute("success", "Registration successful");
         return "redirect:/login";
     }

@@ -1,12 +1,14 @@
 package com.desiato.music.repositories;
 
-import com.desiato.music.models.User;
+import com.desiato.music.models.Role;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, ObjectId> {
+public interface RoleRepository extends MongoRepository<Role, ObjectId> {
 
-    User findByUsername(String username);
+    boolean existsByName(String roleName);
+    Role findRoleByName(String roleName);
+
 }
