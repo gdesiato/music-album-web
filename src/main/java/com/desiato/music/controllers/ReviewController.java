@@ -5,6 +5,7 @@ import com.desiato.music.models.Review;
 import com.desiato.music.services.AlbumService;
 import com.desiato.music.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
@@ -22,6 +23,7 @@ public class ReviewController {
     @Autowired
     private AlbumService albumService;
 
+    @PreAuthorize("isAuthenticated()") // to enforce authorization before accessing the review form
     @GetMapping("/create/{albumId}")
     public String getReviewForm(@PathVariable("albumId") String albumId, Model model) {
         Optional<Album> optionalAlbum = albumService.albumById(albumId);
@@ -34,6 +36,7 @@ public class ReviewController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create/{albumId}")
     public String submitReview(@PathVariable("albumId") String albumId,
                                @ModelAttribute("review") Review review,
