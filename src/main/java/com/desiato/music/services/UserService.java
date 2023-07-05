@@ -65,9 +65,25 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+
     public User saveUser(User user) {
+        // Ensure that the roles are properly assigned
+        Collection<Role> roles = user.getRoles();
+        if (roles != null && !roles.isEmpty()) {
+            List<Role> savedRoles = new ArrayList<>();
+            for (Role role : roles) {
+                Role savedRole = roleRepository.findRoleByName(role.getName());
+                if (savedRole == null) {
+                    savedRole = roleRepository.save(role);
+                }
+                savedRoles.add(savedRole);
+            }
+            user.setRoles(savedRoles);
+        }
+
         return userRepository.save(user);
     }
+
 
     public void deleteUser(ObjectId id) {
         userRepository.deleteById(id);
