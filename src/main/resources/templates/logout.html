@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Logout Confirmation</title>
+    </head>
+
+    <body>
+        <h2>Logout Confirmation</h2>
+        <p>Are you sure you want to log out?</p>
+        <form th:action="@{/logout}" method="post">
+          <button type="submit">Logout</button>
+        </form>
+        <hr />
+        <p><a href="/">Back to Home</a></p>
+    </body>
+
+</html>

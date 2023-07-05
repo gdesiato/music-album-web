@@ -24,10 +24,13 @@ public class SecurityConfiguration {
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                    .loginPage("/login")
+                    .permitAll()
                 .and()
-                .logout();
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .permitAll();
         return http.build();
     }
 
