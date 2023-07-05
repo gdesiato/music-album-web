@@ -15,6 +15,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Password</th>
+        <th>Roles</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,11 @@
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.email}"></td>
         <td th:text="${user.password}"></td>
+        <td>
+            <ul>
+                <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+            </ul>
+        </td>
     </tr>
     </tbody>
 </table>
