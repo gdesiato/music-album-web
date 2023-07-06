@@ -46,9 +46,22 @@ public class AlbumService {
         }
 
         // Calculate average rating and round to nearest whole number
-        int averageRating = (int) Math.round(totalRating / reviews.size());
+        double averageRating = totalRating / reviews.size();
+        int roundedAverageRating = (int) Math.round(averageRating);
 
         // Update the album's overall rating
-        album.setOverallRating(averageRating);
+        album.setOverallRating(roundedAverageRating);
+
+        // Update the average rating
+        album.setAverageRating(averageRating);
+
+        // Update the number of ratings
+        album.setNumberOfRatings(reviews.size());
+
+        // Assuming the last rating is the most recent, update the 'rating' field
+        if (!reviews.isEmpty()) {
+            album.setRating(reviews.get(reviews.size() - 1).getAlbumRating());
+        }
     }
+
 }
