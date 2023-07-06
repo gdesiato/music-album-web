@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -35,6 +36,6 @@ public class Album {
 
 
     @DBRef
-    private List<Review> reviewIds;
+    private List<Review> reviews = new ArrayList<>();
 
 }

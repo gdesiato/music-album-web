@@ -35,14 +35,20 @@ public class AlbumService {
         return albumRepository.save(album);
     }
 
+
     public void calculateNewRating(Album album) {
-        int totalRating = album.getRating();
-        int numberOfRatings = album.getNumberOfRatings();
-        if (numberOfRatings == 0) {
-            album.setOverallRating(0); // Default overall rating when there are no ratings yet
-        } else {
-            double averageRating = (double) totalRating / numberOfRatings;
-            album.setOverallRating(averageRating);
+        List<Review> reviews = album.getReviews();  // updated
+        double totalRating = 0;
+
+        // Sum the ratings of all reviews
+        for (Review review : reviews) {
+            totalRating += review.getAlbumRating();
         }
+
+        // Calculate average rating and round to nearest whole number
+        int averageRating = (int) Math.round(totalRating / reviews.size());
+
+        // Update the album's overall rating
+        album.setOverallRating(averageRating);
     }
 }

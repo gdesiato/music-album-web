@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,8 +44,13 @@ public class AlbumController {
             Album album = optionalAlbum.get();
             log.info("Album found: " + album.toString());
 
-            // Convert reviewIds to Reviews
-            List<Review> reviews = album.getReviewIds().stream()
+            List<Review> reviews = album.getReviews();
+            if (reviews == null) {
+                reviews = new ArrayList<>();
+                album.setReviews(reviews);
+            }
+
+            reviews = reviews.stream()
                     .filter(Objects::nonNull)  // Ensure there's no null values
                     .collect(Collectors.toList());
 
@@ -58,6 +64,7 @@ public class AlbumController {
     }
 
 
+
     @PostMapping("/{id}/reviews-ratings")
     public ResponseEntity<Album> addReviewAndRating(@PathVariable("id") String musicBrainzId, @RequestBody Review review) {
         Optional<Album> optionalAlbum = albumService.albumById(musicBrainzId);
@@ -67,7 +74,7 @@ public class AlbumController {
 
         Album album = optionalAlbum.get();
         review = reviewService.save(review);
-        album.getReviewIds().add(review);
+        album.getReviews().add(review);
 
         // Update the album's overall rating
         albumService.calculateNewRating(album);

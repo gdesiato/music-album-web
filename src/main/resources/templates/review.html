@@ -5,12 +5,19 @@
 </head>
 <body>
 <h2>Review Album</h2>
-<form th:action="@{/reviews/create}" method="post">
+<form th:action="@{/reviews/create/__${albumId}__}" method="post">
     <input type="hidden" th:value="${albumId}" name="albumId" />
+
     <div>
         <label>Your Review:</label>
-        <textarea name="review" required="required"></textarea>
+        <textarea name="comment" required="required"></textarea>
     </div>
+
+    <div>
+        <label>Album Rating:</label>
+        <input type="number" name="albumRating" required="required" min="0" max="5">
+    </div>
+
     <div>
         <button type="submit">Submit review</button>
     </div>
