@@ -5,10 +5,7 @@ import com.desiato.music.services.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,5 +30,12 @@ public class MusicRestController {
     public ResponseEntity<Optional<Album>> getMovieByID(@PathVariable String musicBrainzId){
         return new ResponseEntity<Optional<Album>>(albumService.albumById(musicBrainzId), HttpStatus.OK);
 
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Album>> search(@RequestParam String q) {
+
+        List<Album> results = albumService.search(q);
+        return ResponseEntity.ok(results);
     }
 }

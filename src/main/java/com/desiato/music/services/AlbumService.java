@@ -58,10 +58,14 @@ public class AlbumService {
         // Update the number of ratings
         album.setNumberOfRatings(reviews.size());
 
-        // Assuming the last rating is the most recent, update the 'rating' field
+        // update the 'rating' field
         if (!reviews.isEmpty()) {
             album.setRating(reviews.get(reviews.size() - 1).getAlbumRating());
         }
+    }
+
+    public List<Album> search(String q) {
+        return albumRepository.findByTitleContainingIgnoreCase(q);
     }
 
 }
