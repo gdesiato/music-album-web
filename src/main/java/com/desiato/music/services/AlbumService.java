@@ -5,17 +5,17 @@ import com.desiato.music.models.Review;
 import com.desiato.music.repositories.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class AlbumService {
-    // Inside this class there are the database access methods
 
-    //repository instantiation
     @Autowired
     private AlbumRepository albumRepository;
+
 
     // Get all the albums
     public List<Album> allAlbums(){

@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>User Registration</title>
-</head>
+    <head>
+        <title>User Registration</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <a href="/albums" class="btn btn-primary">Home</a>
 
-<body>
-<h2>User Registration</h2>
-<form th:action="@{/register}" method="post">
-    <div>
-        <label>First Name: </label>
-        <input type="text" name="firstName" required="required" />
+    </head>
+
+    <body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form th:action="@{/register}" method="post" class="registration-form">
+            <div>
+                <label>First Name: </label>
+                <input type="text" name="firstName" required="required" />
+            </div>
+            <div>
+                <label>Last Name: </label>
+                <input type="text" name="lastName" required="required" />
+            </div>
+            <div>
+                <label>Email: </label>
+                <input type="email" name="email" required="required" />
+            </div>
+            <div>
+                <label>Username: </label>
+                <input type="text" name="username" required="required" />
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="password" name="password" required="required" />
+            </div>
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label>Last Name: </label>
-        <input type="text" name="lastName" required="required" />
-    </div>
-    <div>
-        <label>Email: </label>
-        <input type="email" name="email" required="required" />
-    </div>
-    <div>
-        <label>Username: </label>
-        <input type="text" name="username" required="required" />
-    </div>
-    <div>
-        <label>Password: </label>
-        <input type="password" name="password" required="required" />
-    </div>
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
-</body>
+    </body>
 
 </html>
+
 
 

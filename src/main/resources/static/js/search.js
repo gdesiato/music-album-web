@@ -1,7 +1,7 @@
 window.onload = function() {
     document.getElementById('searchBox').addEventListener('input', function() {
         var query = this.value;
-        if(query.length > 2) { // only search when query is 3 or more characters
+        if(query.length > 0) { // search when query is 1 or more characters
             fetch(`/api/v1/albums/search?q=${query}`)
                 .then(response => {
                     if (!response.ok) {
@@ -17,14 +17,22 @@ window.onload = function() {
                     // clear the results
                     document.getElementById('searchResults').innerHTML = '';
 
-                    // append new results
+                    // create an unordered list element
+                    var resultList = document.createElement('ul');
+
+                    // append new results as list items
                     data.forEach(album => {
-                        var node = document.createElement('a');
-                        node.href = '/albums/' + album.musicBrainzId;
-                        node.textContent = album.title;
-                        node.className = 'searchResult'; // give it a class name for styling
-                        document.getElementById('searchResults').appendChild(node);
+                        var listItem = document.createElement('li');
+                        var link = document.createElement('a');
+                        link.href = '/albums/' + album.musicBrainzId;
+                        link.textContent = album.title;
+                        link.className = 'searchResult'; // give it a class name for styling
+                        listItem.appendChild(link);
+                        resultList.appendChild(listItem);
                     });
+
+                    // append the list to the search results div
+                    document.getElementById('searchResults').appendChild(resultList);
                 })
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
@@ -35,4 +43,5 @@ window.onload = function() {
         }
     });
 };
+
 

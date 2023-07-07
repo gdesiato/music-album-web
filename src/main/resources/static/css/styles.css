@@ -12,6 +12,12 @@
   align-items: flex-start;
 }
 
+.album-cover {
+  width: 500px;
+  height: auto;
+  max-width: 100%;
+}
+
 .card {
   width: 600px;
   margin-bottom: 10px;
@@ -29,6 +35,85 @@
 
 .card:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.review-form textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.review-form input[type="number"] {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.review-form button {
+  align-self: flex-end;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.login-form input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.login-form button {
+  align-self: flex-end;
+}
+
+.heading {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.home-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.registration-form button {
+  align-self: flex-end;
 }
 
 

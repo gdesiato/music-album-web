@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Review Album</title>
-</head>
-<body>
-<h2>Review Album</h2>
-<form th:action="@{/reviews/create/__${albumId}__}" method="post">
-    <input type="hidden" th:value="${albumId}" name="albumId" />
 
-    <div>
-        <label>Your Review:</label>
-        <textarea name="comment" required="required"></textarea>
-    </div>
+    <head>
+        <title>Review Album</title>
+        <a href="/albums" class="btn btn-primary">Home</a>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
+    </head>
 
-    <div>
-        <label>Album Rating:</label>
-        <input type="number" name="albumRating" required="required" min="0" max="5">
-    </div>
+    <body>
+    <h2>Review Album</h2>
+    <form th:action="@{/reviews/create/__${albumId}__}" method="post" class="review-form">
+        <input type="hidden" th:value="${albumId}" name="albumId" />
 
-    <div>
-        <button type="submit">Submit review</button>
-    </div>
-</form>
-</body>
+        <div>
+            <label>Your Review:</label>
+            <textarea name="comment" required="required"></textarea>
+        </div>
+
+        <div>
+            <label>Album Rating:</label>
+            <input type="number" name="albumRating" required="required" min="0" max="5">
+        </div>
+
+        <div>
+            <button type="submit">Submit review</button>
+        </div>
+    </form>
+    </body>
+
 </html>

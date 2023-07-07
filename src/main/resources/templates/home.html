@@ -4,20 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-<h1>WELCOME to MUSIC API</h1>
+<h1 class="heading">WELCOME to MUSIC API</h1>
 
 <sec:authorize access="isAnonymous()">
     <a th:href="@{/login}">Log In</a>
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-    <p>Welcome, <span sec:authentication="name"></span>!</p>
+    <h4>Welcome, <span sec:authentication="name"></span>!</h4>
+    <h4>Let's explore some Rock Albums</h4>
+    <a href="/albums" class="home-button">Home</a>
+
+    <hr />
+
+    <p>Log out</p>
     <a th:href="@{/logout}">Log Out</a>
 </sec:authorize>
-
 </body>
+
+</html>
+
 
 </html>
