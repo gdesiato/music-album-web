@@ -28,4 +28,4 @@ The application's back-end handles data storage, processing, and communication w
 
 By leveraging these technologies, the Rock Albums web application provides a seamless, engaging experience for rock music enthusiasts, enabling them to discover, review, and bond over their shared love for rock albums.
 
-![Rock Album Cover](images/rock_cover.png)
+![Rock Album Cover](src/main/resources/static/images/rock_cover.png)
