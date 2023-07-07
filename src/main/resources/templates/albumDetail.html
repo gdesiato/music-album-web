@@ -3,27 +3,46 @@
 
     <head>
         <title>Album Details</title>
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
         <a href="/albums" class="btn btn-primary">Home</a>
-
     </head>
 
     <body>
         <h2 th:text="${album.title}"></h2>
-        <img th:src="${album.cover}" alt="Album cover image" class="album-cover" />
-        <p><strong>Artist: </strong><span th:text="${album.artist}"></span></p>
 
-        <!-- Displaying genres -->
-        <p><strong>Genres: </strong></p>
-        <ul th:each="genre : ${album.genres}">
-            <li th:text="${genre}"></li>
-        </ul>
+        <p><strong>Artist: <span th:text="${album.artist}"></span></strong></p>
+        <p><strong>Year: <span th:text="${album.releaseYear}"></span></strong></p>
+
+        <div class="album-info">
+            <img th:src="${album.cover}" alt="Album cover image" class="album-cover" />
+
+            <div>
+                <!-- Displaying genres -->
+                <p><strong>Genres: </strong></p>
+                <ul th:each="genre : ${album.genres}">
+                    <li th:text="${genre}"></li>
+                </ul>
+
+                <!-- Displaying tracks -->
+                <p><strong>Tracks: </strong></p>
+                <ul th:each="track : ${album.tracks}">
+                    <li th:text="${track}"></li>
+                </ul>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
 
         <!-- Review button -->
-        <a th:href="@{/reviews/create/{albumId}(albumId=${album.musicBrainzId})}" class="btn btn-primary">Review this album</a>
+        <a th:href="@{/reviews/create/{albumId}(albumId=${album.musicBrainzId})}" class="btn btn-primary custom-btn">Review this album</a>
+
+        <br/>
+        <br/>
+
 
         <!-- Displaying reviews -->
-        <h5>Reviews</h5>
+        <h2>Reviews</h2>
         <div id="reviewsSection">
             <div th:each="review : ${reviews}">
                 <p>
@@ -53,3 +72,4 @@
     </body>
 
 </html>
+

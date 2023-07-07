@@ -1,8 +1,6 @@
+
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  text-align: center;
   padding-top: 20px;
 }
 
@@ -13,9 +11,15 @@
 }
 
 .album-cover {
-  width: 500px;
+  width: 600px;
   height: auto;
   max-width: 100%;
+}
+
+.album-info {
+    display: flex;
+    align-items: start; /* Aligns the items to start of cross axis */
+    gap: 20px; /* Space between the items */
 }
 
 .card {
@@ -74,10 +78,6 @@
   margin-bottom: 15px;
 }
 
-.login-form button {
-  align-self: flex-end;
-}
-
 .heading {
   color: #333;
   font-size: 24px;
@@ -115,6 +115,17 @@
 .registration-form button {
   align-self: flex-end;
 }
+
+.custom-btn {
+  display: inline-block;   /* Make the element behave like a block element but keep it inline */
+  font-weight: bold;
+  padding: 30px 50px;
+  border-radius: 10px;
+  background-color: #0056b3;
+  color: #fff;
+  margin-bottom: 50px;  /* Add space below the button */
+}
+
 
 
 

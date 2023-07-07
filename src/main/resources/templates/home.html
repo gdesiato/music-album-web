@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css">
+    </head>
 
-<body>
-<h1 class="heading">WELCOME to MUSIC API</h1>
+    <body>
+    <div class="container">
+        <h1 class="heading">WELCOME to MUSIC API</h1>
 
-<sec:authorize access="isAnonymous()">
-    <a th:href="@{/login}">Log In</a>
-</sec:authorize>
+        <sec:authorize access="isAnonymous()">
+            <a th:href="@{/login}">Log In</a>
+        </sec:authorize>
 
-<sec:authorize access="isAuthenticated()">
-    <h4>Welcome, <span sec:authentication="name"></span>!</h4>
-    <h4>Let's explore some Rock Albums</h4>
-    <a href="/albums" class="home-button">Home</a>
+        <sec:authorize access="isAuthenticated()">
+            <h4>Welcome, <span sec:authentication="name"></span>!</h4>
+            <h4>Let's explore some Rock Albums</h4>
+            <a href="/albums" class="home-button">Home</a>
 
-    <hr />
+            <hr />
 
-    <p>Log out</p>
-    <a th:href="@{/logout}">Log Out</a>
-</sec:authorize>
-</body>
-
-</html>
-
+            <a th:href="@{/logout}">Log Out</a>
+        </sec:authorize>
+    </div>
+    </body>
 
 </html>
