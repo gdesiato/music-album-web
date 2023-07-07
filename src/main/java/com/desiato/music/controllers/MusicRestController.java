@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/albums")
+@RequestMapping("/api/v1")
 public class MusicRestController {
 
     @Autowired
@@ -32,9 +32,8 @@ public class MusicRestController {
 
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Album>> search(@RequestParam String q) {
-
+    @GetMapping("/albums/search")
+    public ResponseEntity<List<Album>> searchAlbums(@RequestParam String q) {
         List<Album> results = albumService.search(q);
         return ResponseEntity.ok(results);
     }
