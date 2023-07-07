@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <title>Rock Albums</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <div sec:authorize="isAuthenticated()">
+        <a href="/logout" class="btn btn-primary">Log out</a>
+    </div>
 
     <div style="display: flex; align-items: center;">
         <h4 style="margin-right: 10px;">Search Album</h4>
