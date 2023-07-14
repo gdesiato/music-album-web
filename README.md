@@ -28,4 +28,36 @@ The application's back-end handles data storage, processing, and communication w
 
 By leveraging these technologies, the Rock Albums web application provides a seamless, engaging experience for rock music enthusiasts, enabling them to discover, review, and bond over their shared love for rock albums.
 
+#
+//////////////////////////
+//////////////////////////
+//////////////////////////
+###
+## Installation Prerequisites
+
+You will need the following things properly installed on your computer.
+
+* [Java Development Kit (JDK)](https://adoptopenjdk.net/index.html) version 11
+* [Maven](https://maven.apache.org/download.cgi) 3.3+
+
+## Installation
+
+* `git clone https://github.com/gdesiato/DLBCSPJWD01.git` this repository
+* `cd DLBCSPJWD01`
+
+## Running / Development
+
+
+* `mvn clean install` to install the dependencies
+* `mvn spring-boot:run` to start the application
+    
+
+The application will be running at http://localhost:8080
+
+
+
+
+
 ![Rock Album Cover](src/main/resources/static/images/rock_cover.png)
+
+
