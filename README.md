@@ -39,6 +39,14 @@ You will need the following things properly installed on your computer.
 
 * [Java Development Kit (JDK)](https://adoptopenjdk.net/index.html) version 11
 * [Maven](https://maven.apache.org/download.cgi) 3.3+
+* [MongoDB](https://www.mongodb.com/try/download/community)
+
+## Importing the Database Dump
+
+This repository includes a dump of sample data for the Rock Albums application. To import this data into your local MongoDB instance:
+
+1. Extract the `rockalbums.tar.gz` file in the repository root. This will create a `dump/` directory.
+2. Run the command `mongorestore --db rockalbums /path/to/your/dump/rockalbums` (replace `/path/to/your/dump/rockalbums` with the actual path to the `rockalbums/` directory inside the `dump/` directory).
 
 ## Installation
 
@@ -47,13 +55,10 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-
 * `mvn clean install` to install the dependencies
 * `mvn spring-boot:run` to start the application
-    
 
 The application will be running at http://localhost:8080
-
 
 
 
