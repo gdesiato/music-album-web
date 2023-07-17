@@ -57,11 +57,13 @@ You will need the following things properly installed on your computer.
 
 This repository includes a dump of sample data for the Music API application. This data is stored in BSON format, which is a binary representation of JSON-like documents. To import this data into your local MongoDB instance:
 
-1. Navigate to the directory where you have run the `mongodump` command. You should find a `dump/` directory in it.
-2. Inside the `dump/` directory, there is a directory that corresponds to your database (`music-api-db`).
+1. Navigate to the application directory and find the `dump/` directory in it.
+2. Inside the `dump/` directory, there is a directory that corresponds to the database (`music-api-db`).
 3. Run the `mongorestore` command to import the data to your MongoDB database:
 
-`mongorestore --db music-api-db /path/to/your/dump/music-api-db`
+* `mongorestore --db music-api-db /path/to/your/dump/music-api-db`
+
+MongoDB will create the `music-api-db` database if it doesn't already exist, and then import the data into that database.
 
 Replace `/path/to/your/dump/music-api-db` with the actual path to the `music-api-db/` directory inside the `dump/` directory. Please ensure your MongoDB server is running before executing the `mongorestore` command.
 
@@ -88,8 +90,6 @@ The application will be running at http://localhost:8080
 ## Running Test Cases
 This project includes a set of unit tests that validate the functionality of the Album and Registration controllers. 
 These tests make use of the JUnit and Mockito frameworks to create a controlled environment where the application's behavior can be evaluated.
-`src/test/java/com/desiato/music/controllers/AlbumControllerTest.java`
-`src/test/java/com/desiato/music/controllers/RegistrationControllerTest.java`
 
 To run these test cases, use the following Maven command:
 * `cd DLBCSPJWD01`
