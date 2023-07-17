@@ -48,17 +48,31 @@ You will need the following things properly installed on your computer.
 * [Maven](https://maven.apache.org/download.cgi) 3.3+
 * [MongoDB](https://www.mongodb.com/try/download/community)
 
-## Importing the Database Dump
 
-This repository includes a dump of sample data for the Rock Albums application. To import this data into your local MongoDB instance:
+<br>
 
-1. Extract the `rockalbums.tar.gz` file in the repository root. This will create a `dump/` directory.
-2. Run the command `mongorestore --db rockalbums /path/to/your/dump/rockalbums` (replace `/path/to/your/dump/rockalbums` with the actual path to the `rockalbums/` directory inside the `dump/` directory).
+## Test DATA - Importing the Database Dump
+
+This repository includes a dump of sample data for the Music API application. This data is stored in BSON format, which is a binary representation of JSON-like documents. To import this data into your local MongoDB instance:
+
+1. Navigate to the directory where you have run the `mongodump` command. You should find a `dump/` directory in it.
+2. Inside the `dump/` directory, there is a directory that corresponds to your database (`music-api-db`).
+3. Run the `mongorestore` command to import the data to your MongoDB database:
+
+`mongorestore --db music-api-db /path/to/your/dump/music-api-db`
+
+Replace `/path/to/your/dump/music-api-db` with the actual path to the `music-api-db/` directory inside the `dump/` directory. Please ensure your MongoDB server is running before executing the `mongorestore` command.
+
+
+
+<br>
 
 ## Installation
 
 * `git clone https://github.com/gdesiato/DLBCSPJWD01.git` this repository
 * `cd DLBCSPJWD01`
+
+<br>
 
 ## Running / Development
 
