@@ -11,6 +11,8 @@ Users and guests can browse a collection of rock albums, including classic favor
 ### User Authentication
 To contribute reviews and ratings, users need to register and log in to the system. This process ensures user authenticity and encourages accountability when posting reviews. Users have the option to browse through the collection as guests but will need to log in to participate in rating and reviewing.
 
+<br>
+
 ## System Architecture
 The Rock Albums web application follows a client-server architecture.
 
@@ -80,6 +82,18 @@ Replace `/path/to/your/dump/music-api-db` with the actual path to the `music-api
 * `mvn spring-boot:run` to start the application
 
 The application will be running at http://localhost:8080
+
+<br>
+
+## Running Test Cases
+This project includes a set of unit tests that validate the functionality of the Album and Registration controllers. 
+These tests make use of the JUnit and Mockito frameworks to create a controlled environment where the application's behavior can be evaluated.
+`src/test/java/com/desiato/music/controllers/AlbumControllerTest.java`
+`src/test/java/com/desiato/music/controllers/RegistrationControllerTest.java`
+
+To run these test cases, use the following Maven command:
+* `cd DLBCSPJWD01`
+* `mvn test`
 
 
 

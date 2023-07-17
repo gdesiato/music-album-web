@@ -51,6 +51,4 @@ public class RegistrationController {
         redirectAttributes.addFlashAttribute("success", "Registration successful");
         return "redirect:/login";
     }
-
-
 }
