@@ -3,6 +3,8 @@
 ## Overview
 The Rock Albums web application is designed for rock music enthusiasts. It serves as a platform where users can discover, explore, and interact with their favorite rock albums. The application targets music lovers, collectors, and fans with a specific interest in rock music.
 
+<br>
+
 ## Features
 
 ### Discover and Explore
